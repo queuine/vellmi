@@ -17,7 +17,7 @@ pod_run_id="$2"
 pod_name="${pod_conf_name}/${pod_run_id}"
 
 # path to pod configuration
-pod_conf_path="${script_dir}/conf/${pod_conf_name}"
+pod_conf_path="${script_dir}/conf/${pod_conf_name}.toml"
 
 # dir for the pod's data
 pod_dir="${script_dir}/pods/${pod_conf_name}/${pod_run_id}"
