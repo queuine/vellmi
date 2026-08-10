@@ -1,0 +1,30 @@
+[vllm]
+load = "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B-NVFP4"
+serve = "nvidia/nemotron-3-nano-30b-a3b-nvfp4-kv-fp8"
+
+params = """
+--max-model-len 256K
+--max-num-batched-tokens 64K
+--max-num-seqs 8
+--kv-cache-dtype fp8
+--enable-chunked-prefill
+--gpu-memory-utilization 0.92
+--moe-backend marlin
+--trust-remote-code
+--reasoning-parser nemotron_v3
+"""
+
+[env]
+FORWARDED_ALLOW_IPS = "*"
+
+[boot]
+image = "queuine/vellmi-pod:latest"
+
+[gpu]
+label = "NVIDIA A40"
+count = 1
+
+[storage]
+system = 20
+models = 40
+
