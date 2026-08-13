@@ -30,7 +30,7 @@ if __name__ == "__main__":
             f"{sys.argv[0]}",
             "",
         ]))
-        sys.exit()
+        sys.exit(1)
     try:
         list_gpus(HEADERS)
     except Exception as exc:
@@ -39,3 +39,4 @@ if __name__ == "__main__":
             str(exc),
             "",
         ]))
+        sys.exit(2)

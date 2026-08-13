@@ -126,7 +126,7 @@ def make_pod(
             str(exc),
             "",
         ]))
-        return
+        return False
 
     try:
         r = requests.post(
@@ -142,7 +142,7 @@ def make_pod(
             str(exc),
             "",
         ]))
-        return
+        return False
 
     try:
         with open(pod_id_path, "w", encoding="utf8") as pod_id_fh:
@@ -153,7 +153,7 @@ def make_pod(
             str(exc),
             "",
         ]))
-        return
+        return False
 
     try:
         sys.stdout.write(json.dumps(pod_info, indent=4) + "\n")
@@ -170,6 +170,9 @@ def make_pod(
                 "Did not get pod info at all.",
                 "",
             ]))
+        return False
+
+    return True
 
 
 if __name__ == "__main__":
@@ -179,5 +182,8 @@ if __name__ == "__main__":
             f"{sys.argv[0]} pod_name pod_conf_path pod_id_path",
             "",
         ]))
-        sys.exit()
-    make_pod(HEADERS, POD_CONF, sys.argv[1], sys.argv[2], sys.argv[3])
+        sys.exit(1)
+    if not make_pod(
+        HEADERS, POD_CONF, sys.argv[1], sys.argv[2], sys.argv[3]
+    ):
+        sys.exit(2)

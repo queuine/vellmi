@@ -35,7 +35,7 @@ if __name__ == "__main__":
             f"{sys.argv[0]} pod_id_path start|stop",
             "",
         ]))
-        sys.exit()
+        sys.exit(1)
     try:
         start_stop_pod(HEADERS, sys.argv[1], sys.argv[2])
     except Exception as exc:
@@ -44,3 +44,4 @@ if __name__ == "__main__":
             str(exc),
             "",
         ]))
+        sys.exit(2)

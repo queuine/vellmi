@@ -31,7 +31,7 @@ if __name__ == "__main__":
             f"{sys.argv[0]} pod_id_path",
             "",
         ]))
-        sys.exit()
+        sys.exit(1)
     try:
         get_show_pod_info(HEADERS, sys.argv[1])
     except Exception as exc:
@@ -40,3 +40,4 @@ if __name__ == "__main__":
             str(exc),
             "",
         ]))
+        sys.exit(2)

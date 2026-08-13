@@ -20,7 +20,7 @@ if __name__ == "__main__":
             f"{sys.argv[0]}",
             "",
         ]))
-        sys.exit()
+        sys.exit(1)
     sys.stdout.write(
         gen_vllm_token(TOKEN_PREFIX, TOKEN_BYTES_COUNT)
     )
