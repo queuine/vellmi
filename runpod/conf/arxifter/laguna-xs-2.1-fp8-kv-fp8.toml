@@ -1,0 +1,33 @@
+[vllm]
+load = "poolside/Laguna-XS-2.1-FP8"
+serve = "poolside/laguna-xs-2.1-fp8-kv-fp8"
+
+params = """
+--max-model-len 24K
+--max-num-batched-tokens 12K
+--max-num-seqs 6
+--kv-cache-dtype fp8
+--enable-chunked-prefill
+--gpu-memory-utilization 0.92
+--tensor-parallel-size 2
+--moe-backend triton
+--trust-remote-code
+--reasoning-parser poolside_v1
+"""
+
+[env]
+VLLM_BLOCKSCALE_FP8_GEMM_FLASHINFER = "0"
+VLLM_USE_DEEP_GEMM = "0"
+FORWARDED_ALLOW_IPS = "*"
+
+[boot]
+image = "queuine/vellmi-pod:latest"
+
+[gpu]
+label = "NVIDIA RTX PRO 4500 Blackwell Server Edition"
+count = 2
+
+[storage]
+system = 20
+models = 40
+
