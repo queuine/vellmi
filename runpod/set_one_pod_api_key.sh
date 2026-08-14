@@ -26,6 +26,13 @@ if [ -s "${pod_api_key_path}" ]; then
     exit 1;
 fi
 
+# path to shared vLLM API key
+shared_key_path="${script_dir}/keys/vllm_api_key"
+if [ -s "${shared_key_path}" ]; then
+    ln -s "${shared_key_path}" "${pod_api_key_path}"
+    exit 0;
+fi
+
 touch "${pod_api_key_path}"
 chmod go-rwx "${pod_api_key_path}"
 "${script_dir}/../common/genkey/gen_vllm_api_key.sh" > "${pod_api_key_path}"

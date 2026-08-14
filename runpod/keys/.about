@@ -1,0 +1,4 @@
+* hf_token has to be set, it is used for downloads from Hugging Face
+* rp_api_key has to be set, it is used for command execution on Runpod
+* if vllm_api_key is set, it gets used for all newly created pods,
+  otherwise each pod gets its own key for calling vLLM API methods
