@@ -26,6 +26,7 @@ def get_logs(headers, pod_id_path, tail_count):
         for line in resp.iter_lines():
             if line:
                 sys.stdout.write(str(line).rstrip() + "\n")
+                sys.stdout.flush()
 
 
 if __name__ == "__main__":
