@@ -1,0 +1,28 @@
+[vllm]
+load = "openai/gpt-oss-20b"
+serve = "openai/gpt-oss-20b-kv-bf16"
+
+params = """
+--max-model-len 24K
+--max-num-batched-tokens 12K
+--max-num-seqs 4
+--kv-cache-dtype bfloat16
+--enable-chunked-prefill
+--gpu-memory-utilization 0.95
+--moe-backend marlin
+"""
+
+[env]
+FORWARDED_ALLOW_IPS = "*"
+
+[boot]
+image = "queuine/vellmi-pod:latest"
+
+[gpu]
+label = "NVIDIA GeForce RTX 3090"
+count = 1
+
+[storage]
+system = 20
+models = 40
+

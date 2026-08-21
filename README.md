@@ -18,8 +18,8 @@ Information on individual pods is at the `runpod/pods` directory.
 
 Vellmi has been developed primarily as a tool for evaluating usability of various LLMs
 for the [arxifter](https://arxifter.quadet.com/) system.
-The LLMs that have been tested this way are *Nemotron-3-Nano-30B-A3B* and *Laguna-XS-2.1*,
-see the `runpod/conf/arxifter` directory .
+The LLMs that have been tested this way are *Nemotron-3-Nano-30B-A3B*, *GPT-OSS-20B*
+and *Laguna-XS-2.1*, see the `runpod/conf/arxifter` directory .
 
 ### Use of the *vellmi* system
 
